@@ -1,0 +1,236 @@
+:root {
+    --main-bg-color: #272b30;
+    --main-bg-color-2: #32383e;
+    --main-color: #3a497b;
+    --main-text-color: #ffffff;
+    --main-text-color-2: #939598;
+    --main-text-color-3: #0394c7;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.custom-reset {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.custom-reset:hover,
+.custom-reset:focus,
+.custom-reset:active {
+    color: var(--main-text-color-3);
+    text-decoration: none;
+}
+
+a.active {
+    color: var(--main-text-color-3) !important;
+}
+
+body {
+    background-color: var(--main-bg-color);
+    font-family: "Audiowide", sans-serif;
+}
+
+.card {
+    background-color: var(--main-bg-color) !important;
+    color: var(--main-text-color) !important;
+    transition: 0.3s all ease;
+}
+
+.card h5 {
+    font-size: 18px;
+    padding-right: 10px;
+}
+
+.card p {
+    color: var(--main-text-color-2) !important;
+    font-family: "Roboto", sans-serif;
+}
+
+.card-body {
+    height: 150px;
+}
+
+@media (max-width: 576px) {
+    .card-body {
+        min-height: 0px;
+    }
+}
+
+.tag {
+    display: inline-block;
+    color: var(--main-text-color) !important;
+    font-size: 10px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+}
+
+/* Start Cover */
+.cover img {
+    object-fit: cover;
+    max-height: 30vh;
+}
+
+/* End Cover */
+/* Start Navbar */
+.navbar {
+    z-index: 10;
+    top: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.navbar .container {
+    background-color: var(--main-color) !important;
+    color: var(--main-text-color);
+    padding: 15px;
+    box-shadow: 0 0 10px rgb(0 0 0 / 0.7);
+}
+
+.navbar .logo a {
+    color: var(--main-text-color);
+}
+
+.navbar .logo img {
+    max-width: 40px;
+}
+
+.navbar .nav-link {
+    cursor: pointer;
+    font-size: 14px !important;
+}
+
+/* End Navbar */
+/* Start Home */
+.card img {
+    filter: saturate(50%);
+    transition: 0.3s all ease;
+}
+
+.card:hover {
+    box-shadow: 0 0 10px var(--main-color);
+    transform: scale(1.02);
+    cursor: pointer;
+}
+
+.card:hover img {
+    filter: saturate(100%);
+}
+
+.card .tag {
+    background-color: var(--main-bg-color-2);
+}
+
+.card .top .tag {
+    background-color: var(--main-color);
+    transition: 0.3s all ease;
+}
+
+.card:hover .top .tag {
+    background-color: var(--main-text-color-3);
+}
+
+/* End Home */
+/* Start Details */
+
+#details i {
+    cursor: pointer;
+    transition: 0.3s all ease;
+}
+
+#details i:hover {
+    color: var(--main-text-color-3);
+}
+
+#details img {
+    box-shadow: 0 0 10px var(--main-color);
+}
+
+.details {
+    font-family: "Roboto", sans-serif;
+}
+
+.details h3 {
+    font-family: "Audiowide", sans-serif;
+}
+
+.details h5 {
+    font-size: 15px;
+}
+
+.details .tag {
+    background-color: var(--main-color);
+    padding: 3px 10px;
+    border-radius: 10px;
+}
+
+.details button {
+    background-color: var(--main-color);
+    color: var(--main-text-color);
+    font-family: "Audiowide", sans-serif;
+}
+
+.details button:hover {
+    background-color: var(--main-text-color-3);
+}
+
+/* End Details */
+
+/* Start Loader */
+.loading {
+    position: fixed;
+    z-index: 9999;
+    inset: 0;
+    background-color: #272b30e3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: inline-block;
+    border-top: 4px solid #fff;
+    border-right: 4px solid transparent;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    position: relative;
+}
+
+.loader::after {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border-left: 4px solid #ff3d00;
+    border-bottom: 4px solid transparent;
+    animation: rotation 0.5s linear infinite reverse;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* End Loader */
