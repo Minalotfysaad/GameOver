@@ -1,13 +1,18 @@
 "use strict";
 
+import { Details } from "./details.module.js";
 import { Ui } from "./ui.module.js";
 
 export class Home {
     constructor() {
-        // Loader
-        this.loader = document.querySelector(".loading");
         // Ui instance
         this.ui = new Ui();
+        //Elements
+        this.home = document.getElementById("home");
+        this.details = document.getElementById("details");
+        // Loader
+        this.loader = document.querySelector(".loading");
+
         //Navbar click event handler
         document.querySelectorAll(".nav-link").forEach((element) => {
             element.addEventListener("click", () => {
@@ -19,8 +24,8 @@ export class Home {
         this.callData(document.querySelectorAll(".nav-link")[0]);
     }
 
-    //fetch data function
-    async fetchData(cat) {
+    //fetch Homedata function
+    async fetchHomeData(cat) {
         this.loader.classList.remove("d-none");
         const url = `https://free-to-play-games-database.p.rapidapi.com/api/games?category=${cat}`;
         const options = {
@@ -48,9 +53,18 @@ export class Home {
         element.classList.add("active");
     }
 
-    //Call data function
+    //Navbar Call data function
     async callData(element) {
-        const categoryData = await this.fetchData(element.dataset.category);
+        const categoryData = await this.fetchHomeData(element.dataset.category);
         this.ui.displayGames(categoryData);
+    }
+
+    //Card Click
+    async cardClick(card) {
+        this.home.classList.add("d-none");
+        this.details.classList.remove("d-none");
+        const id = card.dataset.id;
+        this.details = new Details();
+        this.details.fetchDetailsData(id);
     }
 }

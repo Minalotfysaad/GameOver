@@ -1,3 +1,4 @@
+/* Start Global */
 :root {
     --main-bg-color: #272b30;
     --main-bg-color-2: #32383e;
@@ -15,6 +16,20 @@
 
 html {
     scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+    width: 0.75rem;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--main-bg-color-2);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--main-bg-color);
+    border-radius: 50px;
+    box-shadow: 0 0 5px rgb(0 0 0 / 0.5) inset;
 }
 
 .custom-reset {
@@ -61,7 +76,7 @@ body {
 
 @media (max-width: 576px) {
     .card-body {
-        min-height: 0px;
+        height: auto;
     }
 }
 
@@ -75,6 +90,7 @@ body {
     font-weight: bold;
 }
 
+/* End Global */
 /* Start Cover */
 .cover img {
     object-fit: cover;
@@ -87,7 +103,7 @@ body {
     z-index: 10;
     top: 0;
     padding-top: 0;
-    padding-bottom: 0;
+    margin-top: -28px;
 }
 
 .navbar .container {
@@ -95,6 +111,7 @@ body {
     color: var(--main-text-color);
     padding: 15px;
     box-shadow: 0 0 10px rgb(0 0 0 / 0.7);
+
 }
 
 .navbar .logo a {
