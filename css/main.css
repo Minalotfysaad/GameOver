@@ -201,6 +201,12 @@ body {
     background-color: var(--main-text-color-3);
 }
 
+.details .see-more,
+.details .see-less {
+    cursor: pointer;
+    color: var(--main-text-color-3) !important;
+}
+
 /* End Details */
 
 /* Start Loader */

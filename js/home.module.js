@@ -14,10 +14,15 @@ export class Home {
         this.loader = document.querySelector(".loading");
 
         //Navbar click event handler
+        const navbarToggler = document.querySelector(".navbar-toggler");
         document.querySelectorAll(".nav-link").forEach((element) => {
             element.addEventListener("click", () => {
                 this.toggleNavLinks(element);
                 this.callData(element);
+                // Close navbar after click
+                if (getComputedStyle(navbarToggler).display !== "none") {
+                    navbarToggler.click();
+                }
             });
         });
         //default data call

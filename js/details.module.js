@@ -28,8 +28,22 @@ export class Details {
             const result = await response.json();
             this.loader.classList.add("d-none");
             this.ui.displayDetails(result);
+            //Close Details
+            this.closeDetails();
+            //Play Now
+            this.playNow();
         } catch (error) {
             console.error(error);
         }
+    }
+    //Close Details
+    closeDetails() {
+        document
+            .querySelector("#details .fa-x")
+            .addEventListener("click", () => {
+                console.log("clicked");
+                document.querySelector("#details").classList.add("d-none");
+                document.querySelector("#home").classList.remove("d-none");
+            });
     }
 }
