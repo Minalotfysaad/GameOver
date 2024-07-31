@@ -39,7 +39,6 @@ export class Details {
         document
             .querySelector("#details .fa-x")
             .addEventListener("click", () => {
-                console.log("clicked");
                 document.querySelector("#details").classList.add("d-none");
                 document.querySelector("#home").classList.remove("d-none");
                 document.querySelector("#details").innerHTML = "";

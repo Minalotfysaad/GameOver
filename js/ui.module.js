@@ -1,9 +1,9 @@
 "use strict";
 
-import { Home } from "./home.module.js";
-
 export class Ui {
-    constructor() {}
+    constructor(cardClickFunction) {
+        this.cardClickFunction = cardClickFunction; // Store the cardClick function
+    }
 
     displayGames(games) {
         let content = ``;
@@ -40,8 +40,7 @@ export class Ui {
         // Card Click
         document.querySelectorAll(".card").forEach((element) => {
             element.addEventListener("click", () => {
-                this.cardClick = new Home();
-                this.cardClick.cardClick(element);
+                this.cardClickFunction(element);
             });
         });
     }
@@ -116,6 +115,7 @@ export class Ui {
                 document.querySelector(".ellipsis").style.display = "inline";
             });
     }
+
     displayPagination(totalPages) {
         let content = ``;
 

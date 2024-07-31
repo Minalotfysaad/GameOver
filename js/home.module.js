@@ -5,9 +5,9 @@ import { Ui } from "./ui.module.js";
 
 export class Home {
     constructor() {
-        // Ui instance
-        this.ui = new Ui();
-        //Elements
+        // Pass the cardClick function to Ui
+        this.ui = new Ui(this.cardClick.bind(this));
+        // Elements
         this.home = document.getElementById("home");
         this.details = document.getElementById("details");
         // Loader
@@ -17,7 +17,7 @@ export class Home {
         this.currentPage = 1;
         this.currentCategory = "";
 
-        //Navbar click event handler
+        // Navbar click event handler
         const navbarToggler = document.querySelector(".navbar-toggler");
         document.querySelectorAll(".nav-link").forEach((element) => {
             element.addEventListener("click", () => {
@@ -29,19 +29,18 @@ export class Home {
                 }
             });
         });
-        //default data call
+        // Default data call
         this.callData(document.querySelectorAll(".nav-link")[0]);
     }
 
-    //fetch Homedata function
+    // Fetch home data function
     async fetchHomeData(cat) {
         this.loader.classList.remove("d-none");
         const url = `https://free-to-play-games-database.p.rapidapi.com/api/games?category=${cat}`;
         const options = {
             method: "GET",
             headers: {
-                "x-rapidapi-key":
-                    "dff56b4c12msh4bd369799b442cbp12c403jsn9adc59110ade",
+                "x-rapidapi-key": "dff56b4c12msh4bd369799b442cbp12c403jsn9adc59110ade",
                 "x-rapidapi-host": "free-to-play-games-database.p.rapidapi.com",
             },
         };
@@ -49,7 +48,7 @@ export class Home {
         try {
             const response = await fetch(url, options);
             const result = await response.json();
-            //loader
+            // Hide loader
             this.loader.classList.add("d-none");
             return result;
         } catch (error) {
@@ -57,19 +56,19 @@ export class Home {
         }
     }
 
-    //Navbar active toggle
+    // Navbar active toggle
     toggleNavLinks(element) {
         document.querySelector(".active").classList.remove("active");
         element.classList.add("active");
     }
 
-    //Call data function
+    // Call data function
     async callData(category, page = 1) {
         this.currentCategory = category.dataset.category;
         this.currentPage = page;
 
         const categoryData = await this.fetchHomeData(this.currentCategory);
-        //Pagination
+        // Pagination
         const totalPages = Math.ceil(categoryData.length / 20);
         this.ui.displayPagination(totalPages);
         this.paginationClick();
@@ -83,50 +82,39 @@ export class Home {
         this.updatePaginationActive();
     }
 
-    //Card Click
+    // Card Click
     async cardClick(card) {
         this.home.classList.add("d-none");
         this.details.classList.remove("d-none");
         const id = card.dataset.id;
-        this.details = new Details();
-        this.details.fetchDetailsData(id);
+        const detailsInstance = new Details();
+        await detailsInstance.fetchDetailsData(id);
+
     }
 
     // Pagination click listeners
     paginationClick() {
-        document
-            .querySelectorAll(".page-item .page-link")
-            .forEach((pageLink) => {
-                pageLink.addEventListener("click", async (event) => {
-                    event.preventDefault();
-                    // Get the page number from the clicked link
-                    const pageNumber = parseInt(event.target.innerText);
+        document.querySelectorAll(".page-item .page-link").forEach((pageLink) => {
+            pageLink.addEventListener("click", async (event) => {
+                event.preventDefault();
+                // Get the page number from the clicked element
+                const pageNumber = parseInt(event.target.textContent);
 
-                    // Fetch and display data for the selected page
-                    await this.callData(
-                        { dataset: { category: this.currentCategory } },
-                        pageNumber
-                    );
-                    // Scroll to top
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                });
+                // Display the current page number and category in the console
+                await this.callData(
+                    document.querySelector(".nav-link.active"),
+                    pageNumber
+                );
             });
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
     }
 
-    // Update pagination
+    // Update pagination active state
     updatePaginationActive() {
-        document.querySelectorAll(".page-item").forEach((pageItem) => {
-            pageItem.classList.remove("active");
-        });
-        const activePageItem = Array.from(
-            document.querySelectorAll(".page-item")
-        ).find(
-            (item) =>
-                parseInt(item.querySelector(".page-link").innerText) ===
-                this.currentPage
-        );
-        if (activePageItem) {
-            activePageItem.classList.add("active");
-        }
+        const paginationLinks = document.querySelectorAll(".page-item");
+        paginationLinks.forEach((link) => link.classList.remove("active"));
+        paginationLinks[this.currentPage - 1].classList.add("active");
     }
 }
