@@ -44,6 +44,7 @@ export class Details {
                 console.log("clicked");
                 document.querySelector("#details").classList.add("d-none");
                 document.querySelector("#home").classList.remove("d-none");
+                document.querySelector("#details").innerHTML = "";
             });
     }
 }

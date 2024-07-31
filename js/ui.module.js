@@ -57,7 +57,7 @@ export class Ui {
         content += `
             <div class="container text-white">
                 <div class="mt-5 px-5 title d-flex justify-content-between align-items-center">
-                    <h2>Game Details</h2>
+                    <h2 class="m-0">Game Details</h2>
                     <i class="fa-solid fa-x"></i>
                 </div>
                 <div class="row p-5 gx-4">

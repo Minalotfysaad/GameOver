@@ -217,7 +217,11 @@ body {
     cursor: pointer;
     color: var(--main-text-color-3) !important;
 }
-
+@media (max-width: 576px) {
+    #details .container{
+        padding-inline: 0;
+    }
+}
 /* End Details */
 
 /* Start Loader */
