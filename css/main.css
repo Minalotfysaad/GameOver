@@ -156,6 +156,17 @@ body {
 .card:hover .top .tag {
     background-color: var(--main-text-color-3);
 }
+.pagination .page-item .page-link {
+    cursor: pointer;
+    background-color: var(--main-bg-color-2) !important;
+    color: var(--main-text-color);
+}
+.pagination .page-item .page-link:hover,
+.pagination .page-item.active > .page-link {
+    background-color: var(--main-color) !important;
+    color: var(--main-text-color);
+    box-shadow: 0 0 8px var(--main-color);
+}
 
 /* End Home */
 /* Start Details */
