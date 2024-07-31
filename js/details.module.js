@@ -30,8 +30,6 @@ export class Details {
             this.ui.displayDetails(result);
             //Close Details
             this.closeDetails();
-            //Play Now
-            this.playNow();
         } catch (error) {
             console.error(error);
         }
