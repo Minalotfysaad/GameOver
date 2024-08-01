@@ -156,13 +156,15 @@ body {
 .card:hover .top .tag {
     background-color: var(--main-text-color-3);
 }
+
 .pagination .page-item .page-link {
     cursor: pointer;
     background-color: var(--main-bg-color-2) !important;
     color: var(--main-text-color);
 }
+
 .pagination .page-item .page-link:hover,
-.pagination .page-item.active > .page-link {
+.pagination .page-item.active>.page-link {
     background-color: var(--main-color) !important;
     color: var(--main-text-color);
     box-shadow: 0 0 8px var(--main-color);
@@ -176,6 +178,10 @@ body {
     transition: 0.3s all ease;
 }
 
+#details .left {
+    font-family: "Roboto", sans-serif;
+}
+
 #details i:hover {
     color: var(--main-text-color-3);
 }
@@ -184,44 +190,144 @@ body {
     box-shadow: 0 0 10px var(--main-color);
 }
 
-.details {
+.right {
     font-family: "Roboto", sans-serif;
 }
 
-.details h3 {
+.right h3 {
     font-family: "Audiowide", sans-serif;
 }
 
-.details h5 {
+.right h5 {
     font-size: 15px;
 }
 
-.details .tag {
+#details .text h5 {
+    font-size: 18px;
+}
+
+#details .text span {
+    /* color: var(--main-text-color-3); */
+    font-style: italic;
+
+}
+
+#details .accordion .accordion-button {
+    padding: 10px;
+    background-color: var(--main-bg-color-2) !important;
+    color: var(--main-text-color);
+}
+
+#details .accordion .accordion-button:focus {
+    box-shadow: none !important;
+}
+
+#details .accordion .accordion-button:hover {
+    background-color: var(--main-color) !important;
+    color: var(--main-text-color);
+}
+
+#details .accordion .accordion-button:not(.collapsed) {
+    background-color: var(--main-color) !important;
+}
+
+#details .accordion .accordion-body {
+    background-color: var(--main-bg-color-2) !important;
+    color: var(--main-text-color);
+    padding: 5px 10px;
+}
+
+#details .accordion .accordion-body li {
+    background-color: var(--main-bg-color-2) !important;
+    color: var(--main-text-color);
+}
+
+#details .screenshots .thumbnail {
+    max-width: 80px;
+    max-height: 80px;
+    object-fit: cover;
+    cursor: pointer;
+    overflow: hidden;
+    transition: 0.3s all ease;
+}
+
+#details .screenshots .thumbnail:hover {
+    box-shadow: 0 0 10px var(--main-color);
+}
+
+#details .screenshots .thumbnail img {
+    box-shadow: none;
+    transition: 0.3s all ease;
+    filter: saturate(50%);
+
+}
+
+#details .screenshots .thumbnail:hover img {
+    transform: scale(1.1);
+    filter: saturate(100%);
+}
+
+#details .screenshots .modal .modal-content {
+    background-color: var(--main-bg-color-2);
+}
+
+#details .screenshots .modal .modal-header {
+    border: none;
+    padding: 15px 30px;
+
+}
+
+#details .screenshots .modal .modal-body {
+    padding: 0;
+}
+
+.modal .modal-title {
+    font-family: "Audiowide", sans-serif;
+}
+
+.modal .btn-close {
+    color: var(--main-text-color) !important;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 50px;
+    background-color: var(--main-bg-color);
+}
+
+.carousel-control-prev:focus,
+.carousel-control-next:focus {
+    box-shadow: none;
+}
+
+.right .tag {
     background-color: var(--main-color);
     padding: 3px 10px;
     border-radius: 10px;
 }
 
-.details button {
+.right button {
     background-color: var(--main-color);
     color: var(--main-text-color);
     font-family: "Audiowide", sans-serif;
 }
 
-.details button:hover {
+.right button:hover {
     background-color: var(--main-text-color-3);
 }
 
-.details .see-more,
-.details .see-less {
+.right .see-more,
+.right .see-less {
     cursor: pointer;
     color: var(--main-text-color-3) !important;
 }
+
 @media (max-width: 576px) {
-    #details .container{
+    #details .container {
         padding-inline: 0;
     }
 }
+
 /* End Details */
 
 /* Start Loader */
